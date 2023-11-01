@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather-header">
+        <div class="search-box">
+          <input class="location-input" type="text" placeholder="Enter your location" />
+          <div class="action-btns">
+            <div class="no-show" id="close-box"> 
+                <button id="close-btn">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <span class="horizontal-line"></span>
+              </div>
+  
+              <button id="search" class="fa-solid fa-magnifying-glass"></button>
+          </div>
+
+        </div>
+      </div>
+      <div class="weather-body">
+        <div class="not-found-box">
+          <p>Sorry couldn't find any matches</p>
+          <img
+            class="not-found-img"
+            src="images/not-found.png"
+            alt="Not found image"
+          />
+        </div>
+
+        <div class="match-found-box">
+          <div class="weather-img-box">
+            <img
+              class="weather-img"
+              src="images/cloud.png"
+              alt="Weather Image"
+            />
+          </div>
+          <div class="weather-box">
+            <div class="location-box">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <p id="location">Amsterdam</p>
+            </div>
+            <p class="temperature">8<sup>°C</sup></p>
+            <p class="description">Light rain</p>
+
+          </div>
+
+          <div class="weather-details">
+            <div class="humidity">
+              <i class="fa-sharp fa-solid fa-droplet humidity-icon"></i>
+              <div class="text">
+                <span id="humidity">50%</span>
+                <p>Humidity</p>
+              </div>
+            </div>
+
+            <div class="wind">
+              <i class="fa-solid fa-wind"></i>
+              <div class="text">
+                <span id="wind-speed">10km/h</span>
+                <p>Wind Speed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/073650f3f9.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
