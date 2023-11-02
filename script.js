@@ -37,11 +37,21 @@ async function getWeather(location) {
 
   // Construct the API URL
   const URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`;
-  const weather_data = await fetch(`${URL}`).then((response) =>
-    response.json()
-  );
 
-  if (weather_data.cod == "404") {
+  let weather_data = null;
+
+  try {
+    const response = await fetch(URL);
+    if (!response.ok) {
+      throw new Error(`API request failed with status ${response.status}`);
+    } else {
+      weather_data = await response.json();
+    }
+  }catch (err) {
+    console.log(err);
+  }
+
+  if (weather_data == null || weather_data.cod == "404") {
     matchFound.classList.add("no-show");
     notFound.classList.add("show");
     return;
@@ -99,7 +109,6 @@ const speechToText = () => {
         locationInput.dispatchEvent(changeEvent);
         searchBtn.click();
     }
-
     recognition.start();
 }
 
