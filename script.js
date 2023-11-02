@@ -12,6 +12,8 @@ const searchBox = document.querySelector(".search-box");
 const closeButton = document.getElementById("close-btn");
 const closeBox = document.getElementById("close-box");
 const locationOutput = document.getElementById("location");
+const micButton = document.getElementById('mic-btn');
+
 
 // Define the API key and constants
 const API_KEY = "17acb9071c816e6e82e16aaf15ea0ace";
@@ -25,7 +27,6 @@ const CLEAR = "Clear";
 // Fetch weather data from the API
 async function getWeather(location) {
   if (location === EMPTY) {
-    console.log("add");
     searchBox.classList.add("error-class");
     return;
   }
@@ -80,6 +81,29 @@ async function getWeather(location) {
   }
 }
 
+
+// Function for speech-to-text conversion
+const speechToText = () => {
+    const recognition = new window.webkitSpeechRecognition();
+
+    if(!recognition){
+        console.log('Speech recognition is not supported in this browser.');
+        return;
+    }
+
+    // Uupdate the input field and trigger the search
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        locationInput.value = transcript;
+        const changeEvent = new Event('input', { bubbles: true, cancelable: true });
+        locationInput.dispatchEvent(changeEvent);
+        searchBtn.click();
+    }
+
+    recognition.start();
+}
+
+
 // Event listeners
 
 // Get weather info on click of Search button
@@ -118,3 +142,9 @@ locationInput.addEventListener("input", (e) => {
     }
   }
 });
+
+
+// Start sppech recognition on mic click
+micButton.addEventListener('click', () => {
+    speechToText();
+})

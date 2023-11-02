@@ -73,6 +73,9 @@ body{
     display: flex;
 }
 
+#mic-btn{
+    margin-left: 5px;
+}
 
 .horizontal-line{
     margin: 0 3px;
