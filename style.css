@@ -205,8 +205,7 @@ body{
 
 
 .error-class{
-    border-width: 2px;
-    border-color: red;
+    border: 2px solid red;
 }
 
 @media screen  and (max-width: 400px){
